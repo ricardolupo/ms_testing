@@ -1,5 +1,5 @@
 {
-  "name": "morganstanley_windows_base",
+  "name": "ms_windows_base",
   "description": "Base role for all Windows servers.",
   "json_class": "Chef::Role",
   "default_attributes": {
