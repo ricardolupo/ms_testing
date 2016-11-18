@@ -1,4 +1,4 @@
-# ms_testing
+# ms_testing 
 
-TODO: Enter the cookbook description here.
 
+This cookbook provides a simple testing framework for Windows related Chef concerns. Thanks and have a nice day.
