@@ -4,18 +4,30 @@ driver:
 
 provisioner:
   name: chef_zero
+  # http_proxy: http://wwwproxy.ms.com:8080
+  # https_proxy: http://wwwproxy.ms.com:8080
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7.2
+  - name: win2012r2
+    driver:
+      box: opentable/win-2012r2-standard-amd64-nocm
+      customize:
+        memory: 2048
+      network:
+        - ["forwarded_port", {guest: 3389, host: 33389, id: "rdp", auto_correct: true}]
+        - ["forwarded_port", {guest: 5985, host: 5985, id: "winrm", auto_correct: true}]
+
+transport:
+  name: winrm
+  elevated: true
 
 suites:
   - name: default
     run_list:
-      - recipe[ms_testing::default]
+      - recipe[ms_testing::geminstall]
     verifier:
       inspec_tests:
         - test/recipes

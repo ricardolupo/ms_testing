@@ -1,0 +1,33 @@
+{
+  "name": "morganstanley_windows_base",
+  "description": "Base role for all Windows servers.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "chef_client": {
+      "init_style": "windows",
+      "interval": "3600",
+      "splay": "300",
+      "task": {
+        "frequency": "onstart"
+      },
+      "config": {
+        "chef_server_url": "https://api.chef.io/organizations/lupo",
+        "ssl_verify_mode": ":verify_none"
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chef-client::config]",
+    "recipe[chef-client::windows_service]",
+    "recipe[chef-client::task]",
+    "recipe[windows::default]",
+    "recipe[ohai]"
+  ],
+  "env_run_lists": {
+
+  }
+}

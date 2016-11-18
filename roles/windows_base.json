@@ -1,0 +1,29 @@
+{
+    "name": "windows_base",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "Role for all Windows servers",
+    "run_list": [
+        "recipe[chef-client::config]",
+        "recipe[chef-client::windows_service]",
+        "recipe[windows::default]",
+        "recipe[ohai]"
+    ],
+    "env_run_lists" : {
+    },
+    "default_attributes": {
+        "chef_client": {
+            "interval": "300",
+            "splay": "30",
+            "config": {
+              "audit_mode": ":enabled",
+              "ssl_verify_mode": ":verify_none",
+              "verify_api_cert": false,
+              "log_location": "\"/var/log/chef-client.log\"",
+              "log_level": "info"
+            }
+        }
+    },
+    "override_attributes": {
+    }
+}
