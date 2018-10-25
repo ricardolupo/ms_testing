@@ -12,7 +12,8 @@
       },
       "config": {
         "chef_server_url": "https://api.chef.io/organizations/lupo",
-        "ssl_verify_mode": ":verify_none"
+        "ssl_verify_mode": ":verify_none",
+        "data_collector.server_url": "https://my-automate-server.mycompany.com/data-collector/v0/"
       }
     }
   },
@@ -25,7 +26,8 @@
     "recipe[chef-client::windows_service]",
     "recipe[chef-client::task]",
     "recipe[windows::default]",
-    "recipe[ohai]"
+    "recipe[ohai]",
+    "recipe[ms_testing::geminstall]"
   ],
   "env_run_lists": {
 
